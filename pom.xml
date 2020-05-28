@@ -69,27 +69,24 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
-               <plugin>
-      <groupId>org.jacoco</groupId>
-          <artifactId>jacoco-maven-plugin</artifactId>
-             <version>0.8.6-SNAPSHOT</version>
-              <configuration>
+             
+        <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+          <configuration>
                 <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
                   <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
                    </configuration>
-                     <executions>
-                       <execution>
-                         <id>jacoco-initialize</id>
-                          <goals> 
-                           <goal>prepare-agent</goal>
-                            </goals>
-                             </execution>
-                              </executions>
-                                <phase>package</phase>
-                                 <goals>
-                                  <goal>report</goal>
-                                   </goals>
-                                    </plugin>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <!-- select non-aggregate reports -->
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+        
       </plugins>
    </pluginManagement>
    </build>
